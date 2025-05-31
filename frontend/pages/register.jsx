@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../components/Layout';
 import styles from '../styles/Register.module.scss';
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -30,49 +29,47 @@ export default function RegisterPage() {
   };
 
   return (
-    <Layout>
-      <div className={styles.registerWrapper}>
-        <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
-          <h1 className={styles.title}>Register</h1>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            className={styles.input}
-          />
-          <input
-            type="phone"
-            placeholder="Phone Number"
-            value={phone}
-            onChange={e => setPhone(e.target.value)}
-            required
-            className={styles.input}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-            className={styles.input}
-          />
-          <select
-            className={styles.input}
-            value={company}
-            onChange={e => setCompany(e.target.value)}
-            required
-          >
-            <option value="hp">HP</option>
-            <option value="iocl">IOCL</option>
-          </select>
-          <button type="submit" className={styles.button}>
-            Register
-          </button>
-          {error && <div className={styles.error}>{error}</div>}
-        </form>
-      </div>
-    </Layout>
+    <div className={styles.registerWrapper}>
+      <form className={styles.registerForm} onSubmit={handleSubmit} autoComplete="off">
+        <h1 className={styles.title}>Register</h1>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          className={styles.input}
+        />
+        <input
+          type="phone"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
+          required
+          className={styles.input}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          className={styles.input}
+        />
+        <select
+          className={styles.input}
+          value={company}
+          onChange={e => setCompany(e.target.value)}
+          required
+        >
+          <option value="hp">HP</option>
+          <option value="iocl">IOCL</option>
+        </select>
+        <button type="submit" className={styles.button}>
+          Register
+        </button>
+        {error && <div className={styles.error}>{error}</div>}
+      </form>
+    </div>
   );
 }

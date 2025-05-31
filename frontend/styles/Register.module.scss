@@ -1,0 +1,97 @@
+.registerWrapper {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 0;
+    background: none;
+}
+
+.registerCard {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 2.5em 1.2em;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.registerForm {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.title {
+    font-weight: 700;
+    color: #0070f3;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.inputGroup {
+    margin-bottom: 1.2em;
+}
+
+.input {
+    border-radius: 8px;
+    padding: 0.9em 1em;
+    font-size: 1em;
+    border: 1.5px solid #d1d5db;
+    width: 100%;
+    background: #f8fafc;
+    transition: border 0.2s, box-shadow 0.2s;
+    outline: none;
+    margin-bottom: 0.2em;
+    box-sizing: border-box;
+    appearance: none; /* For consistent dropdown look */
+}
+.input:focus {
+    border: 1.5px solid #0070f3;
+    box-shadow: 0 0 0 2px #e6f0fa;
+    background: #fff;
+}
+
+.button {
+    font-weight: 600;
+    padding: 0.85em;
+    border-radius: 8px;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    width: 100%;
+    background: #0070f3;
+    color: #fff;
+    border: none;
+    transition: background 0.2s;
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #005bb5;
+}
+
+.error {
+    color: #e53935;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 0.5em;
+    font-size: 1em;
+}
+
+@media (max-width: 600px) {
+    .registerCard {
+        padding: 1.5em 0.5em;
+        max-width: 95vw;
+    }
+    .title {
+        font-size: 1.3rem;
+    }
+}

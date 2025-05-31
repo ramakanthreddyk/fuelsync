@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import styles from '../styles/Register.module.scss';
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");

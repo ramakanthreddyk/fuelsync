@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const fetchPumpSnos = async () => {
   const token = localStorage.getItem('token');

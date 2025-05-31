@@ -1,5 +1,5 @@
 // services/upload.js
-const BASE_URL = 'http://localhost:5000/api/v1'; // Ensure correct API path
+const BASE_URL = 'process.env.NEXT_PUBLIC_API_URL/v1'; // Ensure correct API path
 
 export const uploadFile = async(file) => {
     const formData = new FormData();

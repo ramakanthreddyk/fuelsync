@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import axios from 'axios';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {

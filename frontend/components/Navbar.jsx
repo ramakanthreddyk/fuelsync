@@ -39,9 +39,11 @@ export default function Navbar() {
         </button>
         <div className={`${styles.navLinks} ${menuOpen ? styles.show : ''}`}>
           <Link href="/" className={isActive('/')}>Home</Link>
+          <Link href="/sales" className={isActive('/sales')}>Sales</Link>
           {token && (
             <Link href="/dashboard" className={isActive('/dashboard')}>Dashboard</Link>
           )}
+          <Link href="/nozzle-config" className={isActive('/nozzle-config')}>Nozzle Config</Link>
           {!token && (
             <>
               <Link href="/login" className={isActive('/login')}>Login</Link>

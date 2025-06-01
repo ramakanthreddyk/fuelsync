@@ -2,7 +2,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 
 const columns = [
-  { field: 'original_filename', headerName: 'File Name', flex: 1 },
   { field: 'pump_sno', headerName: 'Pump Sno', flex: 1 },
   { field: 'date', headerName: 'Date', flex: 1 },
   { field: 'time', headerName: 'Time', flex: 1 },
@@ -13,11 +12,24 @@ const columns = [
   { field: 'status', headerName: 'Status', flex: 1 },
 ];
 
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString();
+}
+
 export default function UploadTable({ data }) {
+  // Map data to format the date field
+  const rows = data.map(row => ({
+    ...row,
+    date: formatDate(row.date),
+  }));
+
   return (
     <Box sx={{ height: 600, width: '100%' }}>
       <DataGrid
-        rows={data}
+        rows={rows}
         columns={columns}
         getRowId={(row) => row.upload_id}
         pageSize={10}

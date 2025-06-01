@@ -1,0 +1,8 @@
+CREATE TABLE pump_nozzle_config (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES users(user_id), -- 🔑 Link to the admin
+  pump_sno TEXT NOT NULL,
+  nozzle_number INT CHECK (nozzle_number BETWEEN 1 AND 4),
+  fuel_type TEXT CHECK (fuel_type IN ('Petrol', 'Diesel')),
+  updated_at TIMESTAMP DEFAULT NOW()
+);

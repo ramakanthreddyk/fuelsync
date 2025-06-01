@@ -1,4 +1,3 @@
-// pages/sales.jsx
 import { useEffect, useState } from 'react';
 import { fetchPumpSnos, fetchSaleData } from '../services/sales';
 import { Box, Typography, Button, Select, MenuItem, Table, TableHead, TableRow, TableCell, TableBody, Paper, FormControl, InputLabel } from '@mui/material';
@@ -33,6 +32,14 @@ export default function SalesCalculator() {
     }
   };
 
+  const calculateTotal = () => {
+    if (!saleData) return 0;
+    return Object.values(saleData.sales)
+      .map((item) => item.sale_value || 0)
+      .reduce((acc, val) => acc + val, 0)
+      .toFixed(2);
+  };
+
   return (
     <Box p={4}>
       <Typography variant="h4" gutterBottom>
@@ -56,7 +63,7 @@ export default function SalesCalculator() {
         </FormControl>
 
         <Button variant="contained" color="primary" onClick={handleFetch}>
-          Get Sale
+          Get Latest Sale of the Pump
         </Button>
       </Box>
 
@@ -84,22 +91,30 @@ export default function SalesCalculator() {
             <TableHead>
               <TableRow>
                 <TableCell>Nozzle</TableCell>
-                <TableCell>Latest</TableCell>
+                <TableCell>Fuel Type</TableCell>
                 <TableCell>Previous</TableCell>
+                <TableCell>Latest</TableCell>
                 <TableCell>Sale (Litres)</TableCell>
+                <TableCell>Sale Value (₹)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {Object.entries(saleData.sales).map(([key, val]) => (
                 <TableRow key={key}>
                   <TableCell>{key}</TableCell>
-                  <TableCell>{val.latest ?? '-'}</TableCell>
+                  <TableCell>{val.fuel_type || '-'}</TableCell>
                   <TableCell>{val.previous ?? '-'}</TableCell>
+                  <TableCell>{val.latest ?? '-'}</TableCell>
                   <TableCell>{val.sale ?? '-'}</TableCell>
+                  <TableCell>{val.sale_value ? `₹${val.sale_value}` : '-'}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
+
+          <Typography variant="h6" sx={{ mt: 2 }}>
+            Total Sale Value: ₹ {calculateTotal()}
+          </Typography>
         </Paper>
       )}
     </Box>
